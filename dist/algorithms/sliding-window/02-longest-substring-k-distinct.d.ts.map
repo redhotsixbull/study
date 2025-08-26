@@ -1,0 +1,1 @@
+{"version":3,"file":"02-longest-substring-k-distinct.d.ts","sourceRoot":"","sources":["../../../src/algorithms/sliding-window/02-longest-substring-k-distinct.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;GAeG;AAEH,wBAAgB,yBAAyB,CAAC,CAAC,EAAE,MAAM,EAAE,CAAC,EAAE,MAAM,GAAG,MAAM,CAGtE;AAGD,eAAO,MAAM,SAAS;;;;;;;GA0BrB,CAAC"}
