@@ -16,7 +16,36 @@
 
 export function mergeIntervals(intervals: number[][]): number[][] {
   // 여기에 코드를 작성하세요
-  throw new Error("구현되지 않음");
+
+  const result: number[][] = [intervals[0]!];
+
+  for (let i = 0; i < intervals.length; i++) {
+    // 마지막 값 을순환하면 바로
+    if (i === intervals.length - 1) {
+      break;
+    }
+
+    let mergendLengh: number = result.length;
+    /// current
+    let current = intervals[i];
+    /// next
+    let next = intervals[i + 1];
+
+    //병합필요
+    if (current![1]! >= next![0]!) {
+      // 다음꺼의 두번째 보다 크다면 아에 무시
+      if (current![1]! >= next![1]!) {
+        // skip
+      } else {
+        //마지막값 다음값의 뒷값으로 변경
+        result[mergendLengh - 1]![1] = next![1]!;
+      }
+      // 추가
+    } else if (current![1]! < next![0]!) {
+      result.push(next!);
+    }
+  }
+  return result;
 }
 
 // 테스트 케이스
