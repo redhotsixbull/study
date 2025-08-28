@@ -19,7 +19,16 @@
 
 export function permute(nums: number[]): number[][] {
   // 여기에 코드를 작성하세요
-  throw new Error("구현되지 않음");
+  let result:number[][] = [];
+
+  function backTrack() {
+    
+  }
+
+  backTrack();
+  
+
+  return result;
 }
 
 // 테스트 케이스

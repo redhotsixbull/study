@@ -13,7 +13,26 @@
 
 export function maxSumSubarray(arr: number[], k: number): number {
   // 여기에 코드를 작성하세요
-  throw new Error("구현되지 않음");
+  let maxWindow: number[] = [];
+  let maxWindowSum = sum(arr.slice(0, k));
+
+  for (let i = 0; i < arr.length; i++) {
+    let tempSum = sum(arr.slice(i, i + k));
+    if (tempSum > maxWindowSum) {
+      maxWindow = arr.slice(i, i + k);
+      maxWindowSum = tempSum;
+    }
+  }
+
+  return maxWindowSum;
+}
+
+function sum(arr: number[]) {
+  let result = 0;
+  for (let k in arr) {
+    result = result + arr[k]!;
+  }
+  return result;
 }
 
 // 테스트 케이스

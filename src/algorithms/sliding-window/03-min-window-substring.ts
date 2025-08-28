@@ -19,8 +19,43 @@
  */
 
 export function minWindow(s: string, t: string): string {
-  // 여기에 코드를 작성하세요
-  throw new Error("구현되지 않음");
+  let size = 1;
+  let result = "";
+
+  function search() {
+    // 불가능 케이스
+    if (t.length > s.length) {
+      return;
+    }
+    // 못찾음 없음 상태
+    if (size > s.length) {
+      return;
+    }
+
+    for (let left = 0; left <= s.length - size; left++) {
+      let right = left + size;
+      if (checkIncludeChar(t, s.slice(left, right))) {
+        result = s.slice(left, left + size);
+        return;
+      }
+    }
+    // for문돌동안 발견못하면 사이즈 늘리기
+    size++;
+    search();
+  }
+
+  search();
+
+  return result;
+}
+
+function checkIncludeChar(s: string, target: string) {
+  for (let i = 0; i < s.length; i++) {
+    if (!target.includes(s[i]!)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // 테스트 케이스

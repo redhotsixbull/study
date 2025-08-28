@@ -20,8 +20,21 @@
  */
 
 export function fibonacci(n: number): number {
-  // 여기에 코드를 작성하세요
-  throw new Error("구현되지 않음");
+  if (n <= 1) return n;
+
+  let prev1 = 0;
+  let prev2 = 1;
+
+  // i <= n 으로해야 마지막 10번째까지 하는것.
+  for (let i = 2; i <= n; i++) {
+    let current = prev1 + prev2;
+
+    //다음꺼 세팅
+    prev1 = prev2;
+    prev2 = current;
+  }
+
+  return prev2;
 }
 
 // 테스트 케이스

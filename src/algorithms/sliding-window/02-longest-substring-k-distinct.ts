@@ -16,8 +16,50 @@
  */
 
 export function longestSubstringKDistinct(s: string, k: number): number {
-  // 여기에 코드를 작성하세요
-  throw new Error("구현되지 않음");
+  let left = 0;
+  let rightNumber = s.length - 1;
+  let max = s.length;
+
+  const result = evaluateString(s, left, rightNumber, k);
+
+  return result?.length;
+}
+
+function evaluateString(
+  s: string,
+  left: number,
+  right: number,
+  targetNumber: number
+) {
+  // 사용된 문자열갯수가 목표치보다 많다면 윈도우 줄이기
+  while (targetNumber < calculateUsedChar(s.slice(left, right))) {
+    /// 왼쪽한칸올렸는데 사용갯수가 줄어들었다면
+    if (
+      calculateUsedChar(s.slice(left, right)) >
+      calculateUsedChar(s.slice(left + 1, right))
+    ) {
+      left++;
+      //오른쪽 한칸을 내렸는데 사용갯수가 줄어들었다면
+    } else if (
+      calculateUsedChar(s.slice(left, right)) >
+      calculateUsedChar(s.slice(left, right - 1))
+    ) {
+      right--;
+    }
+  }
+
+  return s.slice(left, right);
+}
+
+function calculateUsedChar(s: string) {
+  if (s.length === 0) {
+    return 0;
+  }
+  let set = new Set();
+  for (let i = 0; i < s.length; i++) {
+    set.add(s[i]);
+  }
+  return set.size;
 }
 
 // 테스트 케이스
